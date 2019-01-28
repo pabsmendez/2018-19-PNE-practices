@@ -4,4 +4,4 @@ def fibonacci(n):
         print(c, end = ',')
         c, d = d, c+d
     print()
-fibonacci(7)
+fibonacci(int(input(n)))
