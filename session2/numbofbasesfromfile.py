@@ -1,11 +1,11 @@
 f = open("ADN.txt")
-sequence = f.readline()
+sequence = f.read()
+sequence = sequence.replace("\n", "")
 print("total length", len(sequence))
 A = 0
 C = 0
 G = 0
 T = 0
-INCORRECTBASE = 0
 for letter in sequence.lower():
     if letter is "a":
         A += 1
