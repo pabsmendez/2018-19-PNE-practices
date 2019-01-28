@@ -5,4 +5,3 @@ def fibonacci(n):
         c, d = d, c+d
     print()
 fibonacci(int(input(n)))
-
