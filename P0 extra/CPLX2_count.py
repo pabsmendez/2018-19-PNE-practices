@@ -5,7 +5,6 @@ C = 0
 G = 0
 T = 0
 i = 0
-print(len(sequence))
 while i < len(sequence):
     base = sequence[i]
     if base == ">" :
