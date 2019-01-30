@@ -1,9 +1,10 @@
 def fibonacci(n):
-    d = int(input())
+    d = 0
     c = 1
-    while c < n:
-        print(c, end = ',')
-        c, d = d, c+d
-    print()
-number = int(input("fibonacci number"))
-fibonacci(number)
+    countf = 0
+    for i in range(n+1):
+        countf += d
+        d, c = c, (d+c)
+    print(countf)
+    return
+fibonacci(int(input("fibonacci number")))
