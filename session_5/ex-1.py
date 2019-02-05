@@ -11,7 +11,7 @@ def count_a(seq):
     return result
 
 # main program
-s = "AGTACACTGGT"
+s = input("please enter the seq: ")
 na = count_a(s)
 print("the number of As is: {}".format(na))
 
@@ -19,6 +19,10 @@ print("the number of As is: {}".format(na))
 total = len(s)
 
 #calculate the per of As in the sequence
-percen = round(100.0 * na/total, 1)
+if total > 0:
+    percen = round(100.0 * na/total, 1)
+else:
+    percen = 0
+
 print("this sequence is {} bases in length".format(total))
 print("the percentages of As is {}%".format(percen))
