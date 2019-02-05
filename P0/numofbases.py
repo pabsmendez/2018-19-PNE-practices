@@ -4,7 +4,6 @@ A = 0
 C = 0
 G = 0
 T = 0
-INCORRECTBASE = 0
 for letter in sequence.lower():
     if letter is "a":
         A += 1
