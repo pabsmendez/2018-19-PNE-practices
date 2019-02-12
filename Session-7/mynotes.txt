@@ -1,0 +1,42 @@
+Here you will take your notes
+
+Client-server model. The client starts the communication with the server. The second one receive a request that answer to the client.
+The server connects with many clients.
+
+if you don't have the client it's not a problem because the server can attend a client, the program doesn't crash, but if you don't have
+a server, it's a problem.
+
+types of client: any devices with processor or micro processor that can connect with a server (tablets, phones,...)
+A big server can have sub-servers.
+
+A computer can run two programmes, as a server and as a client.
+
+Internet: the client and the server are connected by a network named internet. (Now we don't know what happened inside the internet).
+In it we have some computers connected between them and they are divided in groups called networks. If we want send a message from one server computer to other
+we need use that networks. IPs addy: connect with networks interface. IPs address isn't the same, depends on the network that you want contact.
+IP: 212.128.253.86
+
+*ping time to 8.8.8.8
+time=3.62 ms
+
+*ping time to my computer
+time=0.053 ms
+
+*ping time to a computer in the same network .85
+time=0.513 ms (600us)
+
+ping time to teacher's phone
+time=5.65 ms cuando conectas con servers del mismo network tarda menos
+
+DNS(Domain Name System): nombre q se le asocia a una IP
+
+* ping to www.google.com
+216.58.211.228
+
+* ping to urjc.es
+192.168.162.16
+
+Port: diferentes extensiones de una misma IP
+
+
+THIS IS A TEXT EXAMPLE TO ADDING TO MY FILE
