@@ -14,9 +14,9 @@ for b in sequences:
 
     print("count bases:", end=" ")
     for base in bases:
-        print("{}: {}".format(base, b.strbases.count(base)),end=",")
+        print("{}: {}".format(base, b.strbases.count(base)),end=" ")
     print()
     print("bases percentage: ", end=" ")
     for base in bases:
-        print("{}: {}%".format(base, b.percentage(base)),end=",")
+        print("{}: {}%".format(base, b.percentage(base)),end=" ")
     print()
