@@ -1,8 +1,9 @@
 import socket
+from seq_P2EXTRA import Seq
 
 # Configure the Server's IP and PORT
 PORT = 8080
-IP = "212.128.253.85"
+IP = "192.168.56.1"
 MAX_OPEN_REQUESTS = 5
 
 # Counting the number of connections
@@ -32,8 +33,9 @@ try:
         print("Message from client: {}".format(msg))
 
         # Send the messag
-        message = "thanks"
-        send_bytes = str.encode(message)
+        message = Seq(msg)
+        result = message.complement()
+        send_bytes = str.encode(result.strbases)
         # We must write bytes, not a string
         clientsocket.send(send_bytes)
         clientsocket.close()
