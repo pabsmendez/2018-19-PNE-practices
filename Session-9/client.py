@@ -1,4 +1,5 @@
 import socket
+import termcolor
 
 # SERVER IP, PORT
 IP = "212.128.253.86"
@@ -25,6 +26,6 @@ while True:
     response = s.recv(2048).decode()
 
     # Print the server's response
-    print("Response: {}".format(response))
+    termcolor.cprint("Response: {}".format(response, 'green'))
 
     s.close()
