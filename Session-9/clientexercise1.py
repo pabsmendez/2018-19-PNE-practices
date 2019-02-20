@@ -1,7 +1,7 @@
 import socket
 
 # SERVER IP, PORT
-IP = "192.168.56.1"
+IP = "212.128.253.111"
 PORT = 8082
 
 while True:
