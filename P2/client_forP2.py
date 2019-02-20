@@ -8,8 +8,8 @@ while True:
 
     print("socket created")
 
-    PORT = 8080
-    IP = "212.128.253.85"
+    PORT = 8088
+    IP = "212.128.253.111"
 
     # connect to the server
     s.connect((IP, PORT))
