@@ -1,17 +1,13 @@
 import socket
-import termcolor
 
 # SERVER IP, PORT
-IP = "212.128.253.86"
-PORT = 8080
-
-
+IP = "192.168.56.1"
+PORT = 8082
 
 while True:
 
     # Before connecting to the server, ask the user for the string
-    msg = input("> ")
-
+    msg = (input("> "))
 
     # Now we can create the socket and connect to the servewr
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -26,6 +22,6 @@ while True:
     response = s.recv(2048).decode()
 
     # Print the server's response
-    termcolor.cprint("Response: {}".format(response, 'green'))
+    print("Response: {}".format(response))
 
     s.close()
