@@ -1,7 +1,7 @@
 import socket
-
+from seq_forP2 import Seq
 # Configure the Server's IP and PORT
-PORT = 8088
+PORT = 8089
 IP = "212.128.253.111"
 MAX_OPEN_REQUESTS = 5
 
@@ -32,9 +32,14 @@ try:
         print("Message from client: {}".format(msg))
 
         # Send the messag
-        message = msg
-        send_bytes = str.encode(msg)
-        # We must write bytes, not a string
+        mystr = msg
+        s1 = Seq(mystr)
+        s2 = s1.complement()
+        s3 = s2.reversed()
+        bases = "A", "C", "T", "G"
+        sequences = s1, s2, s3
+        nsequences = 0
+        send_bytes = str.encode(s3.strbases)
         clientsocket.send(send_bytes)
         clientsocket.close()
 
