@@ -3,7 +3,7 @@ import sys
 import termcolor
 # Configure the Server's IP and PORT
 PORT = 8082
-IP = "192.168.56.1"
+IP = "212.128.253.111"
 MAX_OPEN_REQUESTS = 5
 
 
@@ -16,14 +16,13 @@ def process_client(cs):
     print("Request message: {}".format(termcolor.cprint(msg, 'green')))
 
     if msg == "EXIT":
-        sys.exit()
-    else:
-        pass
+        cs.close()
+        return False
 
 
     # Send the msg back to the client (echo)
     cs.send(str.encode(msg))
-
+    cs.close()
 
 # create an INET, STREAMing socket
 serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -37,8 +36,8 @@ serversocket.listen(MAX_OPEN_REQUESTS)
 
 print("Socket ready: {}".format(serversocket))
 
-
-while True:
+ready = True
+while ready:
     # accept connections from outside
     # The server is waiting for connections
     print("Waiting for connections at {}, {} ".format(IP, PORT))
@@ -47,6 +46,7 @@ while True:
     # Connection received. A new socket is returned for communicating with the client
     print("Attending connections from client: {}".format(address))
 
-    process_client(clientsocket)
+    if not process_client(clientsocket):
+        ready = False
 
     clientsocket.close()
