@@ -6,7 +6,7 @@ PORT = 8087
 
 
 # Before connecting to the server, ask the user for the string
-msg = """ACTG countA complement"""
+msg = """ACTG len complement"""
 
 # Now we can create the socket and connect to the servewr
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
