@@ -1,7 +1,6 @@
 class Seq:
     """A class for representing sequences"""
     def __init__(self, strbases):
-        print("new sequence created")
 
         self.strbases = strbases
 
