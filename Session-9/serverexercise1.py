@@ -1,5 +1,4 @@
 import socket
-import sys
 import termcolor
 # Configure the Server's IP and PORT
 PORT = 8082
