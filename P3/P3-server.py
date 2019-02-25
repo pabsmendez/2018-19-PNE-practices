@@ -55,7 +55,7 @@ def process_client(cs):
                 return True
 
     elif len(msg) == 1:
-        if seq.strbases == 'EXIT':
+        if seq.strbases == 'EXIT' or seq.strbases == 'exit':
             print("Closed")
             cs.close()
             return False
