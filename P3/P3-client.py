@@ -8,7 +8,7 @@ ready = True
 while ready:
     # Before connecting to the server, ask the user for the string
     msg = input()
-    if msg == "EXIT":
+    if msg.upper() == "EXIT" :
         ready = False
     elif not msg:
         msg = "EMPTY"
