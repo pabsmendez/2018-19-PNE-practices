@@ -18,13 +18,24 @@ def process_client(cs):
     msg = msg.split()
     seq = Seq(msg[0].upper())
 
-    #split investigar luego es poner el 0 en los if in dentro el 2
-    listamsg = msg[1:]
-    bases = 'A', 'C', 'T', 'G'
+    listmsg = msg[1:]
     results = []
+    bases = 'A', 'C', 'T', 'G'
+    valid = str(bases)
+    counter = 0
+    errorcount = 0
+    for i in msg[0].upper():
+        if i in valid:
+            counter += 1
+        elif i not in valid:
+            errorcount += 1
+    if len(msg[0].upper()) == counter:
+        results.append("OK")
+    else:
+        results.append("ERROR")
+
     if len(msg) > 1:
-        print("OK")
-        for element in listamsg:
+        for element in listmsg:
             print(element)
             if element == 'len':
                 results.append(str(seq.len()))
@@ -38,7 +49,12 @@ def process_client(cs):
             elif 'percentage' in element:
                 bases = element[-1]
                 results.append(str(seq.percentage(bases)))
-    else:
+            elif element != Seq:
+                cs.send(str.encode("ERROR"))
+                cs.close()
+                return True
+
+    elif len(msg) == 1:
         if seq.strbases == 'EXIT':
             print("Closed")
             cs.close()
@@ -48,18 +64,18 @@ def process_client(cs):
             cs.close()
             return True
 
-
-
-
     # Send the msg back to the client (echo)
     results = "\n".join(results)
+
     cs.send(str.encode(results))
     cs.close()
     return True
 
-
 # create an INET, STREAMing socket
+
+
 serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
 
 # Bind the socket to the IP and PORT
 serversocket.bind((IP, PORT))
