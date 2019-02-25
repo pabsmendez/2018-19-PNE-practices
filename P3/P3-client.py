@@ -25,7 +25,6 @@ while ready:
     response = s.recv(2048).decode()
 
     # Print the server's response
-    print("OK")
     print(response)
 
     s.close()
