@@ -2,8 +2,8 @@ import socket
 from seq_P3 import Seq
 
 # Configure the Server's IP and PORT
-PORT = 8080
-IP = "192.168.56.1"
+PORT = 8008
+IP = "212.128.253.107"
 MAX_OPEN_REQUESTS = 5
 
 
@@ -45,11 +45,21 @@ def process_client(cs):
             elif element == 'reversed':
                 results.append(seq.reversed().strbases)
             elif 'count' in element:
-                bases = element[-1]
-                results.append(str(seq.count(bases)))
+                bases = element[-1].upper()
+                if element[-1].upper() in valid:
+                    results.append(str(seq.count(bases)))
+                else:
+                    cs.send(str.encode("ERROR"))
+                    cs.close()
+                    return True
             elif 'percentage' in element:
-                bases = element[-1]
-                results.append(str(seq.percentage(bases)))
+                bases = element[-1].upper()
+                if element[-1].upper() in valid:
+                    results.append(str(seq.percentage(bases)))
+                else:
+                    cs.send(str.encode("ERROR"))
+                    cs.close()
+                    return True
             elif element != Seq:
                 cs.send(str.encode("ERROR"))
                 cs.close()
