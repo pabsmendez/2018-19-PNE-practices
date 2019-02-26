@@ -24,6 +24,7 @@ def process_client(cs):
     valid = str(bases)
     counter = 0
     errorcount = 0
+    # To search an error
     for i in msg[0].upper():
         if i in valid:
             counter += 1
@@ -64,9 +65,9 @@ def process_client(cs):
             cs.close()
             return True
 
-    # Send the msg back to the client (echo)
     results = "\n".join(results)
 
+    # Send the msg back to the client (echo)
     cs.send(str.encode(results))
     cs.close()
     return True
