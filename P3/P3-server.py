@@ -2,8 +2,8 @@ import socket
 from seq_P3 import Seq
 
 # Configure the Server's IP and PORT
-PORT = 8008
-IP = "212.128.253.107"
+PORT = 8000
+IP = "192.168.56.1"
 MAX_OPEN_REQUESTS = 5
 
 
@@ -15,6 +15,11 @@ def process_client(cs):
     # Print the received message, for debugging
     print("Request message: {}".format(msg))
 
+    if msg == "\n":
+        cs.send(str.encode("ALIVE"))
+        cs.close()
+        return True
+
     msg = msg.split()
     seq = Seq(msg[0].upper())
 
@@ -25,6 +30,7 @@ def process_client(cs):
     counter = 0
     errorcount = 0
     # To search an error
+
     for i in msg[0].upper():
         if i in valid:
             counter += 1
@@ -68,12 +74,9 @@ def process_client(cs):
     elif len(msg) == 1:
         if seq.strbases == 'EXIT' or seq.strbases == 'exit':
             print("Closed")
+            cs.send(str.encode("Server is closed"))
             cs.close()
             return False
-        elif seq.strbases == "EMPTY":
-            cs.send(str.encode("ALIVE"))
-            cs.close()
-            return True
 
     results = "\n".join(results)
 
