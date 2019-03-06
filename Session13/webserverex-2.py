@@ -14,7 +14,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         print("  Path: " + self.path)
 
         if "/" == self.path:
-            f = open("index.html", "r")
+            f = open("index_ex2.html", "r")
             content = f.read()
             f.close()
 
