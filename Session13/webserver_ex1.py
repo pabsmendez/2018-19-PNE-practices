@@ -1,7 +1,7 @@
 import http.server
 import socketserver
 
-PORT = 8009
+PORT = 8010
 
 
 class TestHandler(http.server.BaseHTTPRequestHandler):
@@ -13,15 +13,9 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         print("  Cmd: " + self.command)
         print("  Path: " + self.path)
 
-        if "/" == self.path:
-            f = open("index.html", "r")
-            content = f.read()
-            f.close()
-
-        else:
-            f = open("error.html")
-            content = f.read()
-            f.close()
+        f = open("index_ex1.html", "r")
+        content = f.read()
+        f.close()
 
         self.send_response(200)
         self.send_header('Content-Type', 'text/html')
