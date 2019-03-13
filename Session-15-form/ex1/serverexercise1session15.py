@@ -22,7 +22,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         i = path.find("=")
         if i != -1:
             msg = path[i + 1:]
-            file = open("home_exercise1.html", "r")
+            file = open("msgrecieved_ex1.html", "r")
             contents = file.read()
             contents = contents.replace("msg", msg)
 
