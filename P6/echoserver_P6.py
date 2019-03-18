@@ -1,7 +1,7 @@
 import http.server
 import socketserver
 import termcolor
-from seq_P6 import Seq
+from P6.Seq_Pablo import Seq
 
 PORT = 8009
 
