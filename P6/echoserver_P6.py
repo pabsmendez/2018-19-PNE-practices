@@ -1,22 +1,23 @@
 import http.server
 import socketserver
 import termcolor
-from P6.Seq_Pablo import Seq
+from seq_P6 import Seq
 
-PORT = 8009
+PORT = 8090
 
 
 def doing_operations(msg):
     processes = {}
     msg = msg.split("&")
-    print(msg)
+    print(msg , 90)
     seq = Seq(msg.pop(0).split("=")[-1].upper())
-    print(seq, "ok")
+    print(seq.strbases, "ok")
     bases = "ACTG"
 
     # Check if the characters of the DNA sequence are all allowed
     if not all(a in bases for a in seq.strbases):
         processes = "ERROR"
+        print(100)
         return processes
 
     processes.update({"Seq": seq.strbases})
@@ -29,11 +30,12 @@ def doing_operations(msg):
             base += request[-1]
         elif "count" in request:
             operation = request.split("=")[-1]
-            process = seq.count(operation)
+            print(operation)
+            process = seq.count(base)
             processes.update({"Result for " + base + " " + operation: process})
         elif "percentage" in request:
             operation = request.split("=")[-1]
-            process = seq.percentage(operation)
+            process = seq.percentage(base)
             processes.update({"Result for " + base + " " + operation: process})
         elif request == "chk=on":
             process = seq.len()
@@ -52,7 +54,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         progresses = demand.split("?")[-1]
         print(progresses)
 
-        if self.path.startswith("/seq") and self.path.startswith("/"):
+        if self.path.startswith("/seq"):
             test = doing_operations(progresses)
             if test == "ERROR":
                 f = open("error_P6.html", 'r')
