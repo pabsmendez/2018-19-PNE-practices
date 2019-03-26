@@ -23,7 +23,7 @@ percentage_bases = {}
 num_of_bases = {}
 ttl_length = sequence.len()
 
-# -- operations
+# -- doing count and percentage operations
 for base in bases:
     percentage_bases.update({base: sequence.percentage(base)})
     num_of_bases.update({base: sequence.count(base)})
@@ -40,6 +40,6 @@ maximum_percentage = max(percentage_bases.items(), key=element)
 # -- print results
 print("Number of bases in FRAT1 gene is {}".format(ttl_length))
 print("FRAT1 gene is {} T bases in length".format(num_of_bases["T"]))
-print("The most popular base is {} and his percentage is {}%".format(maximum_percentage[0], maximum_percentage[1]))
+print("The most popular base is {} and his percentage is {}%.2f".format(maximum_percentage[0], maximum_percentage[1]))
 print(percentage_bases)
 print("The percentages of all the different bases are{}".format(percentage_bases))
