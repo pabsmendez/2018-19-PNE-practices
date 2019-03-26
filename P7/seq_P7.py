@@ -14,7 +14,7 @@ class Seq:
         total = len(self.strbases)
         if total > 0:
             numberbases = self.strbases.count(base)
-            percentage = round(100.0 * numberbases/total, 1)
+            percentage = round(100.0 * numberbases/total, 2)
         else:
             percentage = 0
         return percentage
