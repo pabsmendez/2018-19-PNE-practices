@@ -4,98 +4,73 @@
 import http.client
 import json
 
-
-# -- this function is for obtained the woeid code of the city and connect correctly with thw server
-def connection(City):
-    try:
-        # -- API information
-        HOSTNAME = "www.metaweather.com"
-        ENDPOINT = "/api/location/search/?query="
-        ENDPOINT = ENDPOINT + City
-        # -- For the location we have to use the
-        # -- Were on earth identifier
-        # -- London woeid = 44418
-        # -- Madrid woeid = 766273
-
-        METHOD = "GET"
-
-        # -- Here we can define special headers if needed
-        headers = {'User-Agent': 'http-client'}
-
-        # -- Connect to the server
-        # -- NOTICE it is an HTTPS connection!
-        # -- If we do not specify the port, the standar one
-        # -- will be used
-        conn = http.client.HTTPSConnection(HOSTNAME)
-
-        # -- Send the request. No body (None)
-        # -- Use the defined headers
-        conn.request(METHOD, ENDPOINT + LOCATION_WOEID + '/', None, headers)
-
-        # -- Wait for the server's response
-        r1 = conn.getresponse()
-
-        # -- Read the response's body and close
-        # -- the connection
-        text_json = r1.read().decode("utf-8")
-        conn.close()
-
-        i = json.loads(text_json)
-        return i[0]['woeid']
-    except:
-        return False
-
+# -- API information
 HOSTNAME = "www.metaweather.com"
 ENDPOINT = "/api/location/"
-City = input("Capital name:")
 
-if not (connection(City)):
-    print("Incorrect city name, please try again")
-else:
-    LOCATION_WOEID = str(connection(City))
-    METHOD = "GET"
-    # -- Here we can define special headers if needed
-    headers = {'User-Agent': 'http-client'}
+# -- For the location we have to use the
+# -- Were on earth identifier
+# -- London woeid = 44418
+# -- Madrid woeid = 766273
 
-    # -- Connect to the server
-    # -- NOTICE it is an HTTPS connection!
-    # -- If we do not specify the port, the standar one
-    # -- will be used
-    conn = http.client.HTTPSConnection(HOSTNAME)
+LOCATION_WOEID = "766273"
+METHOD = "GET"
 
-    # -- Send the request. No body (None)
-    # -- Use the defined headers
-    conn.request(METHOD, ENDPOINT + LOCATION_WOEID + '/', None, headers)
+# -- Here we can define special headers if needed
+headers = {'User-Agent': 'http-client'}
 
-    # -- Wait for the server's response
-    r1 = conn.getresponse()
+# -- Connect to the server
+# -- NOTICE it is an HTTPS connection!
+# -- If we do not specify the port, the standar one
+# -- will be used
+conn = http.client.HTTPSConnection(HOSTNAME)
 
-    # -- Print the status
-    print()
-    print("Response received: ", end='')
-    print(r1.status, r1.reason)
+# -- Send the request. No body (None)
+# -- Use the defined headers
+conn.request(METHOD, ENDPOINT + LOCATION_WOEID + '/', None, headers)
 
-    # -- Read the response's body and close
-    # -- the connection
-    text_json = r1.read().decode("utf-8")
-    conn.close()
-    # -- Optionally you can print the
-    # -- received json file for testing
-    # print(text_json)
+# -- Wait for the server's response
+r1 = conn.getresponse()
 
-    # -- Generate the object from the json file
-    weather = json.loads(text_json)
+# -- Read the response's body and close
+# -- the connection
+text_json = r1.read().decode("utf-8")
+conn.close()
 
-    # -- Get the data
-    time = weather['time']
+# -- Here we can define special headers if needed
+headers = {'User-Agent': 'http-client'}
 
-    temp0 = weather['consolidated_weather'][0]
-    description = temp0['weather_state_name']
-    temp = temp0['the_temp']
-    place = weather['title']
+# -- Connect to the server
+# -- NOTICE it is an HTTPS connection!
+# -- If we do not specify the port, the standar one
+# -- will be used
+conn = http.client.HTTPSConnection(HOSTNAME)
 
-    print()
-    print("Place: {}".format(place))
-    print("Time: {}".format(time))
-    print("Weather description: {}".format(description))
-    print("Current temp: {} degrees".format(temp))
+# -- Send the request. No body (None)
+# -- Use the defined headers
+conn.request(METHOD, ENDPOINT + LOCATION_WOEID + '/', None, headers)
+
+# -- Wait for the server's response
+r1 = conn.getresponse()
+
+# -- Print the status
+print()
+print("Response received: ", end='')
+print(r1.status, r1.reason)
+
+# -- Generate the object from the json file
+weather = json.loads(text_json)
+
+# -- Get the data
+time = weather['time']
+
+temp0 = weather['consolidated_weather'][0]
+description = temp0['weather_state_name']
+temp = temp0['the_temp']
+place = weather['title']
+
+print()
+print("Place: {}".format(place))
+print("Time: {}".format(time))
+print("Weather description: {}".format(description))
+print("Current temp: {} degrees".format(temp))
