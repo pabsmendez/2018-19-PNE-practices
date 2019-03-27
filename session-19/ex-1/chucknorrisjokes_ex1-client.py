@@ -50,6 +50,6 @@ for ENDPOINTS in ENDPOINT:
     elif ENDPOINTS == "/categories":
         print("number of categories: ", len(chuck['value']))
     elif ENDPOINTS == "/jokes/random":
-        print("Cat image: ", chuck['value'])
+        print("random joke: ", chuck['value'])
     else:
         print("not a correct endpoint")
