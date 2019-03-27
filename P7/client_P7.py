@@ -38,8 +38,7 @@ def element(x):
 maximum_percentage = max(percentage_bases.items(), key=element)
 
 # -- print results
-print("Number of bases in FRAT1 gene is {}".format(ttl_length))
-print("FRAT1 gene is {} T bases in length".format(num_of_bases["T"]))
-print("The most popular base is {} and his percentage is {}%.2f".format(maximum_percentage[0], maximum_percentage[1]))
-print(percentage_bases)
-print("The percentages of all the different bases are{}".format(percentage_bases))
+print("Number of bases in FRAT1 gene is {}\n".format(ttl_length))
+print("FRAT1 gene is {} T bases in length\n".format(num_of_bases["T"]))
+print("The most popular base is {} and his percentage is {}%\n".format(maximum_percentage[0], maximum_percentage[1]))
+print("The percentages of all the different bases are{}\n".format(percentage_bases))
