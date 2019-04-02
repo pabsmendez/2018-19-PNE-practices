@@ -17,7 +17,6 @@ def doing_operations(msg):
     # Check if the characters of the DNA sequence are all allowed
     if not all(a in bases for a in seq.strbases):
         processes = "ERROR"
-        print(100)
         return processes
 
     processes.update({"Seq": seq.strbases})
